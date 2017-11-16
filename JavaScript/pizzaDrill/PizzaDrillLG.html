@@ -18,7 +18,8 @@
 		#Items{width:200px;height:auto;margin:0px auto;float:left; }
 		#ItemPrice{margin-left: 10px; width:200px;height:auto;margin:0px auto;float:left;}
 		#Total{width:100px;height:auto;margin:0px auto;float:left;}
-		#btnOrder{margin:5px 0px 0px 200px;width:200px;height:50px;font-size:25px; background-color: green; color:yellow;opacity: 0.4;border-radius: 20px;}		
+		#btnOrder{margin:5px 0px 0px 50px;width:200px;height:50px;font-size:25px; background-color: green; color:yellow;opacity: 0.4;border-radius: 20px;}
+        #btnClear{margin:5px 0px 0px 100px;width:200px;height:50px;font-size:25px; background-color: green; color:yellow;opacity: 0.4;border-radius: 20px;}		
 		div.left {background-color: green;width: 250px;height: 200px; border: 5px solid green;padding: 10px;
 			margin: 5px;opacity: 0.4;font-size:20px; padding-left: 20px;padding-top: 25px; border-radius: 50px;}
 		div.right {	background-color: green; width:250px;height:200px; border: 5px solid green; padding: 10px;margin:5px;
@@ -26,18 +27,24 @@
 		input[type=radio] { height:20px; width:20px; }
 		input[type=checkbox] { height:15px; width:15px;}
 		</style>	
+		
 	</head>
 <body>
+
 <div id="menuBG">
 	<h1>Hot from Lyci's Pizza Oven!!</h1>
 	<form id="frmMenu">
+	
+	
 		<div class="menu left">
 			<h3>Size:</h3>
-			<input class="size" type="radio" name="Size" value="Personal Pizza"> Personal Pizza $6<br>
-			<input class="size" type="radio" name="Size" value="Medium Pizza"> Medium Pizza $10<br>
-			<input class="size" type="radio" name="Size" value="Large Pizza" checked> Large Pizza $14<br>
-			<input class="size" type="radio" name="Size" value="Extra Large Pizza"> Extra Large $16<br>
-		</div>
+			<input class="size" type="radio" name="Size" value="Personal Pizza"> Personal Pizza + $6<br>
+			<input class="size" type="radio" name="Size" value="Medium Pizza"> Medium Pizza +$10<br>
+			<input class="size" type="radio" name="Size" value="Large Pizza" checked> Large Pizza + $14<br>
+			<input class="size" type="radio" name="Size" value="Extra Large Pizza"> Extra Large + $16<br>
+		</div> 
+		
+		
 		<div class="menu right">
 			<h3>Meats:</h3>
 			<input class="meats" type="checkbox" name="Meat" value="Pepperoni"> Pepperoni<br>
@@ -47,20 +54,24 @@
 			<input class="meats" type="checkbox" name="Meat" value="Anchovy"> Anchovy<br>
 			<input class="meats" type="checkbox" name="Meat" value="Chicken"> Chicken<br>
 		</div>
+	
+			
 		<div class="menu left">
 			<h3>Cheese:</h3>
 			<input class="Cheese" type="radio" name="Cheese" value="Regular"> Regular<br>
 			<input class="Cheese" type="radio" name="Cheese" value="No Cheese"> No Cheese<br>
-			<input class="Cheese" type="radio" name="Cheese" value="Extra Cheese" checked> Extra Cheese<br>
+			<input class="Cheese" type="radio" name="Cheese" value="Extra Cheese" checked> Extra Cheese +3<br>
 		</div>
 		<div class="menu right">
 			<h3>Crust:</h3>
 			<input class="Crust" type="radio" name="Crust" value="Plain Crust"> Plain Crust<br>
 			<input class="Crust" type="radio" name="Crust" value="Garlic Butter Crust"> Garlic Butter Crust<br>
-			<input class="Crust" type="radio" name="Crust" value="Cheese Stuffed Crust" checked> Cheese Stuffed Crust<br>
+			<input class="Crust" type="radio" name="Crust" value="Cheese Stuffed Crust" checked> Cheese Stuffed Crust +3<br>
 			<input class="Crust" type="radio" name="Crust" value="Spicy Crust"> Spicy Crust<br>
 			<input class="Crust" type="radio" name="Crust" value="House Special Crust"> House Special Crust<br>
 		</div>
+
+	
 		<div class="menu left">
 			<h3>Sauce:</h3>
 			<input class="Sauce" type="radio" name="Sauce" value="Marinara Sauce"> Marinara Sauce<br>
@@ -81,6 +92,8 @@
 		</div>
 		
 		<input id="btnOrder" type="button" onclick="getReceipt()" value ="Place Order">
+		<input id="btnClear" type="button" onclick="clearAll()" value ="Clear Order">
+		
 		
 		<div id="cart">
 			<div id="Items"> </div>
@@ -88,6 +101,7 @@
 			<div id="Total">  </div>
 		</div>
 	</form>
+
 
 <!--<script src="pizza.js"></script>-->
 <script>	
@@ -223,6 +237,7 @@ function getCrust(runningTotal,select,price) {
 	runningTotal = (runningTotal + crustTotal);
 	price = price + crustTotal + "<br>";
 	document.getElementById("cart").style.opacity=0.4;
+	//document.getElementById("cart").style.display='none';
 	document.getElementById("Items").innerHTML=select;
 	document.getElementById("ItemPrice").innerHTML=price;
 	document.getElementById("Total").innerHTML = "<br><h3></br> Total Price:$"+runningTotal+".00"+"</h3>";
@@ -230,7 +245,7 @@ function getCrust(runningTotal,select,price) {
 
 function clearAll() {
 	document.getElementById("frmMenu").reset();
-	document.getElementById("cart").style.opacity=0;
+	document.getElementById("cart").style.opacity=0;	
 }; 
 </script>
 </body>
